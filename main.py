@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
-EMAIL_SENDER = "sohan.karfa@gmail.com"
-EMAIL_PASSWORD = "afkjhfutsytussvs"
+EMAIL_SENDER = os.getenv("EMAIL_SENDER")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 app = FastAPI()
 
