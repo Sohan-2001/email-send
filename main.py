@@ -22,10 +22,12 @@ class EmailRequest(BaseModel):
 @app.post("/send-email")
 def send_email(request: EmailRequest):
     msg = EmailMessage()
-    msg["Subject"] = request.subject+ " - Sohan Karfa does not take responsibility for any issues caused by this email."
+    msg["Subject"] = request.subject
     msg["From"] = EMAIL_SENDER
     msg["To"] = request.to
-    msg.set_content(request.body)
+    msg.set_content(
+        request.body + "\n\nSohan Karfa does not take any responsibility of the content of the mail as this is an open API."
+    )
 
     try:
         with smtplib.SMTP(request.host, EMAIL_PORT) as server:
